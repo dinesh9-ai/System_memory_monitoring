@@ -1,0 +1,38 @@
+
+import shutil
+import psutil
+from tkinter import *
+
+m=Tk()
+m.geometry('225x250')
+m.title('Computer health')
+d=shutil.disk_usage('/')
+d1=shutil.disk_usage('D:')
+d2=shutil.disk_usage('E:')
+d3=shutil.disk_usage('F:')
+v=StringVar()
+v1=StringVar()
+v2=StringVar()
+v3=StringVar()
+v4=StringVar()
+l=Label(m,textvariable=v)
+l1=Label(m,textvariable=v1)
+l2=Label(m,textvariable=v2)
+l3=Label(m,textvariable=v3)
+l4=Label(m,textvariable=v4)
+
+v.set('C disk free: '+str(round (d.free/d.total *100,2))+'%'+'\n')
+v1.set('D disk free: '+str(round(d1.free/d1.total *100,2))+'%'+'\n')
+v2.set('E disk free: '+str(round(d2.free/d2.total *100,2))+'%'+'\n')
+v3.set('F disk free: '+str(round(d3.free/d3.total *100,2))+'%'+'\n')
+v4.set('current CPU usage: '+str(psutil.cpu_percent(1))+'%'+'\n'+'\n')
+b=Button(m,text='EXIT',command=m.destroy)
+print('\330[92m')
+print('hello')
+l.pack()
+l1.pack()
+l2.pack()
+l3.pack()
+l4.pack()
+b.pack()
+m.mainloop()
